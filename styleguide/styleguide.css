@@ -7245,6 +7245,7 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
 /* LINKS */
 /* BUTTONS with ICONS */
 /* ARROW LINK */
+/* LINKLIST */
 /* TITLES */
 /* CAROUSEL */
 /* UPSELL */
@@ -7292,7 +7293,6 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
 /* LINK BUTTON */
 /* SOUNDS NAV */
 /* TAB */
-/* IMAGE TILE*/
 /* GRADIENT */
 /* MISC */
 /*------------------------------------*\
@@ -7914,6 +7914,18 @@ It changes the text color, as well as the text color for the hover, focus and vi
   margin-right: 0;
 }
 
+.sc-o-piped--alt li {
+  border-right: 2px solid #bebebe;
+  margin-right: 8px;
+  padding-right: 8px;
+}
+
+@media (min-width: 56.25em) {
+  .sc-o-piped--alt li {
+    margin-left: 0;
+  }
+}
+
 /*------------------------------------*\
     # RESPONSIVE IMAGE
 \*------------------------------------*/
@@ -8314,71 +8326,6 @@ It changes the text color, as well as the text color for the hover, focus and vi
 
 .sc-c-icon--guidance > path {
   fill: #fff;
-}
-
-.sc-c-image-tile {
-  height: 88px;
-  width: 96px;
-}
-
-.sc-c-image-tile--selected {
-  background-color: #fff;
-  border-left: 1px solid #dcdcdc;
-  border-right: 1px solid #dcdcdc;
-}
-
-.sc-c-image-tile--selected .sc-c-image-tile__image {
-  height: 64px;
-  width: 64px;
-}
-
-.sc-c-image-tile__error-text {
-  color: #000;
-  position: absolute;
-  width: 50%;
-  z-index: 1;
-}
-
-.sc-c-image-tile__image {
-  transition: transform 150ms ease;
-  height: 48px;
-  width: 48px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sc-c-image-tile__image {
-    transition: none;
-  }
-}
-
-.sc-c-image-tile__image-container {
-  align-items: center;
-  height: 85px;
-  justify-content: center;
-  padding-top: 3px;
-  position: relative;
-}
-
-.sc-c-image-tile::after {
-  transition: transform 150ms ease;
-  border-bottom: solid 3px #ff4900;
-  content: '';
-  display: block;
-  transform: scaleX(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sc-c-image-tile::after {
-    transition: none;
-  }
-}
-
-.sc-c-image-tile--hoverable:hover::after, .sc-c-image-tile--hoverable:focus::after {
-  transform: scaleX(0.58);
-}
-
-.sc-c-image-tile--hoverable:hover .sc-c-image-tile__image, .sc-c-image-tile--hoverable:focus .sc-c-image-tile__image {
-  transform: scale(1.15);
 }
 
 .sc-s-contrast .sc-c-label {
@@ -9519,6 +9466,14 @@ Setting elements to not translate in 3D space, fixes the bug.
   fill: #fff;
 }
 
+.sc-c-link-list__nav {
+  overflow: hidden;
+}
+
+.sc-c-link-list__prefix {
+  color: #646464;
+}
+
 .sc-c-modal {
   background: #fff;
   color: #fff;
@@ -10288,10 +10243,6 @@ Setting elements to not translate in 3D space, fixes the bug.
   /* Hide scrollbar for IE, Edge and Firefox */
 }
 
-.sc-c-scrollable-nav--alt-background {
-  background-color: #f2f2f2;
-}
-
 .sc-c-scrollable-nav .sc-o-scrollable::-webkit-scrollbar {
   display: none;
 }
@@ -10304,7 +10255,7 @@ Setting elements to not translate in 3D space, fixes the bug.
 }
 
 .sc-c-scrollable-nav__mask {
-  mask: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 24px, #000 calc(100% - 24px), rgba(0, 0, 0, 0) 100%);
+  mask: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 32px, #000 calc(100% - 32px), rgba(0, 0, 0, 0) 100%);
 }
 
 .sc-c-scrollable-nav__item {

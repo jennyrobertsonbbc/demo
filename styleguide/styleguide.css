@@ -7293,6 +7293,8 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
 /* LINK BUTTON */
 /* SOUNDS NAV */
 /* TAB */
+/* IMAGE TILE*/
+/* LOCAL STATION TILE */
 /* GRADIENT */
 /* MISC */
 /*------------------------------------*\
@@ -7340,6 +7342,11 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
   .sc-u-align-left\@m {
     text-align: left;
   }
+}
+
+.sc-u-wrap {
+  max-width: 824px;
+  margin: 0 auto;
 }
 
 .sc-u-animation-fade-enter {
@@ -7448,6 +7455,10 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
 
 .sc-u-font-weight-500 {
   font-weight: 500 !important;
+}
+
+.sc-u-z-20 {
+  z-index: 20;
 }
 
 /*------------------------------------*\
@@ -7991,6 +8002,11 @@ It changes the text color, as well as the text color for the hover, focus and vi
   width: 100%;
 }
 
+.sc-o-responsive-image__gradient {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%);
+  /* W3C */
+}
+
 /**
  * A SVG that sits within the overlay above
  */
@@ -8034,14 +8050,21 @@ It changes the text color, as well as the text color for the hover, focus and vi
   padding-bottom: 56.25%;
 }
 
-.sc-o-responsive-image--faded {
-  opacity: 0.6;
+.sc-o-responsive-image--faded::before {
+  transition: opacity 0.35s ease;
+  background-color: #fff;
+  content: '';
+  display: block;
+  height: 100%;
+  opacity: 0.4;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 }
 
-.sc-o-link:hover .sc-o-responsive-image--faded,
-.sc-o-link:focus .sc-o-responsive-image--faded {
-  transition: opacity 0.35s ease;
-  opacity: 0.7;
+.sc-o-link:hover .sc-o-responsive-image--faded::before,
+.sc-o-link:focus .sc-o-responsive-image--faded::before {
+  opacity: 0.3;
 }
 
 /*------------------------------------*    # SCROLLABLE
@@ -8326,6 +8349,71 @@ It changes the text color, as well as the text color for the hover, focus and vi
 
 .sc-c-icon--guidance > path {
   fill: #fff;
+}
+
+.sc-c-image-tile {
+  height: 88px;
+  width: 96px;
+}
+
+.sc-c-image-tile--selected {
+  background-color: #fff;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+}
+
+.sc-c-image-tile--selected .sc-c-image-tile__image {
+  height: 64px;
+  width: 64px;
+}
+
+.sc-c-image-tile__error-text {
+  color: #000;
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+}
+
+.sc-c-image-tile__image {
+  transition: transform 150ms ease;
+  height: 48px;
+  width: 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-c-image-tile__image {
+    transition: none;
+  }
+}
+
+.sc-c-image-tile__image-container {
+  align-items: center;
+  height: 85px;
+  justify-content: center;
+  padding-top: 3px;
+  position: relative;
+}
+
+.sc-c-image-tile::after {
+  transition: transform 150ms ease;
+  border-bottom: solid 3px #ff4900;
+  content: '';
+  display: block;
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-c-image-tile::after {
+    transition: none;
+  }
+}
+
+.sc-c-image-tile--hoverable:hover::after, .sc-c-image-tile--hoverable:focus::after {
+  transform: scaleX(0.58);
+}
+
+.sc-c-image-tile--hoverable:hover .sc-c-image-tile__image, .sc-c-image-tile--hoverable:focus .sc-c-image-tile__image {
+  transform: scale(1.15);
 }
 
 .sc-s-contrast .sc-c-label {
@@ -8860,6 +8948,25 @@ It changes the text color, as well as the text color for the hover, focus and vi
   height: 4px;
 }
 
+.sc-c-skip-link {
+  background-color: #fff;
+  border: 1px solid #646464;
+  color: #3c3c3c;
+  position: absolute;
+}
+
+.sc-c-skip-link:not(:focus) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .sc-c-smp {
   height: 165px;
   width: 100%;
@@ -9228,6 +9335,23 @@ Setting elements to not translate in 3D space, fixes the bug.
 }
 
 .sc-c-category-card__overlay {
+  height: 100%;
+}
+
+.sc-c-rectangle-category-card__link:active .sc-o-responsive-image__svg, .sc-c-rectangle-category-card__link:focus .sc-o-responsive-image__svg, .sc-c-rectangle-category-card__link:hover .sc-o-responsive-image__svg {
+  opacity: 0;
+}
+
+.sc-c-rectangle-category-card__link:active .sc-o-responsive-image__overlay, .sc-c-rectangle-category-card__link:focus .sc-o-responsive-image__overlay, .sc-c-rectangle-category-card__link:hover .sc-o-responsive-image__overlay {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.sc-c-rectangle-category-card__title {
+  align-self: flex-end;
+  color: #fff;
+}
+
+.sc-c-rectangle-category-card__overlay {
   height: 100%;
 }
 
@@ -9805,6 +9929,22 @@ Setting elements to not translate in 3D space, fixes the bug.
 .sc-c-schedule-item--on-air {
   background: rgba(0, 128, 128, 0.1);
   border-bottom: 2px solid #008080;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+@media (min-width: 25em) {
+  .sc-c-schedule-item--on-air {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+
+@media (min-width: 37.5em) {
+  .sc-c-schedule-item--on-air {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 @media (min-width: 37.5em) {
@@ -10243,6 +10383,10 @@ Setting elements to not translate in 3D space, fixes the bug.
   /* Hide scrollbar for IE, Edge and Firefox */
 }
 
+.sc-c-scrollable-nav--alt-background {
+  background-color: #f2f2f2;
+}
+
 .sc-c-scrollable-nav .sc-o-scrollable::-webkit-scrollbar {
   display: none;
 }
@@ -10255,11 +10399,15 @@ Setting elements to not translate in 3D space, fixes the bug.
 }
 
 .sc-c-scrollable-nav__mask {
-  mask: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 32px, #000 calc(100% - 32px), rgba(0, 0, 0, 0) 100%);
+  mask: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000 24px, #000 calc(100% - 24px), rgba(0, 0, 0, 0) 100%);
 }
 
 .sc-c-scrollable-nav__item {
   flex: 0 0 auto;
+}
+
+.sc-c-local-station-tile__schedule_link:hover path, .sc-c-local-station-tile__schedule_link:focus path {
+  fill: #ff4900;
 }
 
 .sc-c-banner {
@@ -10589,6 +10737,10 @@ Setting elements to not translate in 3D space, fixes the bug.
 
 .sc-c-schedule__full-schedule {
   color: #fff;
+}
+
+.sc-c-schedule-segment__time-segment {
+  text-transform: capitalize;
 }
 
 .sc-c-scrollable-list {

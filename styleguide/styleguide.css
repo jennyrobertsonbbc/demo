@@ -7294,7 +7294,7 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
 /* SOUNDS NAV */
 /* TAB */
 /* IMAGE TILE*/
-/* LOCAL STATION TILE */
+/* NATIONAL TILE */
 /* GRADIENT */
 /* MISC */
 /*------------------------------------*\
@@ -7455,10 +7455,6 @@ Our implementation is based on http://codepen.io/IschaGast/pen/Qjxpxo
 
 .sc-u-font-weight-500 {
   font-weight: 500 !important;
-}
-
-.sc-u-z-20 {
-  z-index: 20;
 }
 
 /*------------------------------------*\
@@ -8002,11 +7998,6 @@ It changes the text color, as well as the text color for the hover, focus and vi
   width: 100%;
 }
 
-.sc-o-responsive-image__gradient {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%);
-  /* W3C */
-}
-
 /**
  * A SVG that sits within the overlay above
  */
@@ -8050,21 +8041,14 @@ It changes the text color, as well as the text color for the hover, focus and vi
   padding-bottom: 56.25%;
 }
 
-.sc-o-responsive-image--faded::before {
-  transition: opacity 0.35s ease;
-  background-color: #fff;
-  content: '';
-  display: block;
-  height: 100%;
-  opacity: 0.4;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
+.sc-o-responsive-image--faded {
+  opacity: 0.6;
 }
 
-.sc-o-link:hover .sc-o-responsive-image--faded::before,
-.sc-o-link:focus .sc-o-responsive-image--faded::before {
-  opacity: 0.3;
+.sc-o-link:hover .sc-o-responsive-image--faded,
+.sc-o-link:focus .sc-o-responsive-image--faded {
+  transition: opacity 0.35s ease;
+  opacity: 0.7;
 }
 
 /*------------------------------------*    # SCROLLABLE
@@ -8948,25 +8932,6 @@ It changes the text color, as well as the text color for the hover, focus and vi
   height: 4px;
 }
 
-.sc-c-skip-link {
-  background-color: #fff;
-  border: 1px solid #646464;
-  color: #3c3c3c;
-  position: absolute;
-}
-
-.sc-c-skip-link:not(:focus) {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
 .sc-c-smp {
   height: 165px;
   width: 100%;
@@ -9335,23 +9300,6 @@ Setting elements to not translate in 3D space, fixes the bug.
 }
 
 .sc-c-category-card__overlay {
-  height: 100%;
-}
-
-.sc-c-rectangle-category-card__link:active .sc-o-responsive-image__svg, .sc-c-rectangle-category-card__link:focus .sc-o-responsive-image__svg, .sc-c-rectangle-category-card__link:hover .sc-o-responsive-image__svg {
-  opacity: 0;
-}
-
-.sc-c-rectangle-category-card__link:active .sc-o-responsive-image__overlay, .sc-c-rectangle-category-card__link:focus .sc-o-responsive-image__overlay, .sc-c-rectangle-category-card__link:hover .sc-o-responsive-image__overlay {
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
-.sc-c-rectangle-category-card__title {
-  align-self: flex-end;
-  color: #fff;
-}
-
-.sc-c-rectangle-category-card__overlay {
   height: 100%;
 }
 
@@ -9929,22 +9877,6 @@ Setting elements to not translate in 3D space, fixes the bug.
 .sc-c-schedule-item--on-air {
   background: rgba(0, 128, 128, 0.1);
   border-bottom: 2px solid #008080;
-  margin-left: -8px;
-  margin-right: -8px;
-}
-
-@media (min-width: 25em) {
-  .sc-c-schedule-item--on-air {
-    margin-left: -16px;
-    margin-right: -16px;
-  }
-}
-
-@media (min-width: 37.5em) {
-  .sc-c-schedule-item--on-air {
-    margin-left: 0;
-    margin-right: 0;
-  }
 }
 
 @media (min-width: 37.5em) {
@@ -10406,8 +10338,56 @@ Setting elements to not translate in 3D space, fixes the bug.
   flex: 0 0 auto;
 }
 
-.sc-c-local-station-tile__schedule-link:hover path, .sc-c-local-station-tile__schedule-link:focus path {
+.sc-c-national-station-tile__station-link:hover .sc-o-responsive-image__svg, .sc-c-national-station-tile__station-link:focus .sc-o-responsive-image__svg {
+  opacity: 1;
+}
+
+.sc-c-national-station-tile__station-link:hover .sc-o-responsive-image__overlay, .sc-c-national-station-tile__station-link:focus .sc-o-responsive-image__overlay {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.sc-c-national-station-tile__station-link .sc-o-responsive-image__svg {
+  width: 24px;
+}
+
+.sc-c-national-station-tile__station-text {
+  flex: auto;
+}
+
+.sc-c-national-station-tile__schedule-link {
+  margin-left: 62px;
+}
+
+@media (min-width: 56.25em) {
+  .sc-c-national-station-tile__schedule-link {
+    margin-left: 96px;
+  }
+}
+
+.sc-c-national-station-tile__schedule-link:hover path, .sc-c-national-station-tile__schedule-link:focus path {
   fill: #ff4900;
+}
+
+.sc-c-national-station-tile__station-image {
+  width: 62px;
+}
+
+@media (min-width: 56.25em) {
+  .sc-c-national-station-tile__station-image {
+    width: 96px;
+  }
+}
+
+.sc-c-national-station-tile__on-air {
+  color: #ff4900;
+}
+
+.sc-c-national-station-tile__time {
+  color: #3c3c3c;
+}
+
+.sc-c-national-station-tile__programme-title {
+  color: #000;
 }
 
 .sc-c-banner {
@@ -10737,10 +10717,6 @@ Setting elements to not translate in 3D space, fixes the bug.
 
 .sc-c-schedule__full-schedule {
   color: #fff;
-}
-
-.sc-c-schedule-segment__time-segment {
-  text-transform: capitalize;
 }
 
 .sc-c-scrollable-list {

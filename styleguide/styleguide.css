@@ -10406,7 +10406,7 @@ Setting elements to not translate in 3D space, fixes the bug.
   flex: 0 0 auto;
 }
 
-.sc-c-local-station-tile__schedule_link:hover path, .sc-c-local-station-tile__schedule_link:focus path {
+.sc-c-local-station-tile__schedule-link:hover path, .sc-c-local-station-tile__schedule-link:focus path {
   fill: #ff4900;
 }
 
